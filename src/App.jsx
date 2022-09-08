@@ -1,9 +1,15 @@
 import React from 'react';
+import { Routes, Route } from "react-router-dom";
+import Cart from './components/Cart/Cart';
+import Shop from './components/Shop/Shop';
 
 const App = () => {
   return (
     <div>
-      <h2>This is Toothsi app</h2>
+      <Routes>
+        <Route path='/' element={<Shop/>} />
+        <Route path='/cart/checkout' element={<Cart/>} />
+      </Routes>
     </div>
   );
 };
