@@ -1,12 +1,39 @@
 import React from 'react';
-import { products } from '../../data';
 import { FaSmile } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { BsArrow90DegLeft } from 'react-icons/bs';
 
-const Shop = () => {
+const Shop = ({ products }) => {
   return (
-    <div className='container mx-auto px-5'>
-      <h2>This is shop page</h2>
+    <div className='container mx-auto px-5 my-8'>
+
+      {/* Top Bar  */}
+      <div className='flex flex-col lg:flex-row gap-y-3 justify-between '>
+
+        {/* Top Left  */}
+        <div className='flex gap-x-4 order-2 lg:order-1'>
+          <select className='border border-[#706f6f] rounded-md cursor-pointer'>
+            <option value="">Category</option>
+            <option value="hoodie">Hoodie</option>
+            <option value="pant">Pant</option>
+            <option value="shirt">Shirt</option>
+          </select>
+          <select className='border border-[#706f6f] rounded-md px-2 cursor-pointer'>
+            <option >Size</option>
+            <option value="lg">lg</option>
+            <option value="xl">xl</option>
+            <option value="xxl">xxl</option>
+          </select>
+          <span className='flex gap-1 text-[#00A0C6] font-semibold cursor-pointer items-center'> <BsArrow90DegLeft /> Reset</span>
+        </div>
+
+        {/* Top Right */}
+        <div className='flex items-center gap-x-2 order-1 lg:order-2'>
+          <span className='hidden lg:block'>Search:</span>
+          <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md'/>
+          <button className='px-4 py-1 bg-[#00A0C6] text-white'>Add To Cart</button>
+        </div>
+      </div>
 
 
       {/* Display Products */}
@@ -30,7 +57,7 @@ const Shop = () => {
                 Price
               </th>
               <th className="p-3 text-sm font-semibold text-left">
-               Total Available
+                Total Available
               </th>
               <th className="p-3 text-sm font-semibold text-center">
                 Buy
@@ -73,7 +100,7 @@ const Shop = () => {
                           {product.availableQuantity > 0 ? (
                             <input type="number" className='w-12 p-1 text-center border border-[#9c9b9b] rounded-sm' />
                           ) : (
-                            <input type="" disabled className='w-12 cursor-not-allowed  p-1 text-center bg-[#efebeb]' title='Out of Stock'/>
+                            <input type="" disabled className='w-12 cursor-not-allowed  p-1 text-center bg-[#efebeb]' title='Out of Stock' />
                           )}
                         </span>
                         <AiOutlineShoppingCart className='text-3xl w-16 py-1 rounded-sm text-[#f2efef] bg-[#383838]' />

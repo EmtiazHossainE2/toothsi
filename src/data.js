@@ -1,6 +1,6 @@
 import hoodie_black from './assets/hoodie_black.jpg'
 
-export const products = [
+export const productList = [
   {
     id: 1,
     name:'Woo Ninja',
@@ -8,7 +8,7 @@ export const products = [
     price: 35,
     size:'xl',
     color: 'red',
-    availableQuantity: 12,
+    availableQuantity: 120,
     category: 'hoodie'
   },
   {
@@ -18,7 +18,7 @@ export const products = [
     price: 40,
     size:'xxl',
     color: 'green',
-    availableQuantity: 21,
+    availableQuantity: 210,
     category: 'hoodie'
   },
   {
@@ -38,7 +38,7 @@ export const products = [
     price: 60,
     size:'xl',
     color: 'black',
-    availableQuantity: 8,
+    availableQuantity: 80,
     category: 'hoodie'
   },
   {
@@ -48,7 +48,7 @@ export const products = [
     price: 40,
     size:'lg',
     color: 'black',
-    availableQuantity: 7,
+    availableQuantity: 70,
     category: 'pant'
   },
   {
@@ -58,7 +58,7 @@ export const products = [
     price: 30,
     size:'lg',
     color: 'red',
-    availableQuantity: 5,
+    availableQuantity: 50,
     category: 'shirt'
   },
   {
@@ -68,7 +68,7 @@ export const products = [
     price: 70,
     size:'lg',
     color: 'gray',
-    availableQuantity: 6,
+    availableQuantity: 60,
     category: 'hoodie'
   },
   {
@@ -78,7 +78,7 @@ export const products = [
     price: 50,
     size:'xl',
     color: 'black',
-    availableQuantity: 7,
+    availableQuantity: 70,
     category: 'pant'
   },
   {
