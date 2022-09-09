@@ -5,12 +5,12 @@ import Shop from './components/Shop/Shop';
 import { productList } from './data';
 
 const App = () => {
-  const [products] = useState(productList)
+  const [products,setProducts] = useState(productList)
   
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Shop products={products}/>} />
+        <Route path='/' element={<Shop products={products} setProducts={setProducts}/>} />
         <Route path='/cart/checkout' element={<Cart/>} />
       </Routes>
     </div>

@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSmile } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { productList } from '../../data';
 import { BsArrow90DegLeft } from 'react-icons/bs';
 
-const Shop = ({ products }) => {
+const Shop = ({ products, setProducts }) => {
+  const [searchInput, setSerachInput] = useState('')
+
+  // Filtering 
+  const filtering = () => {
+    let updatedList = productList
+    setProducts(updatedList)
+
+    // Search 
+    if (searchInput) {
+      updatedList = updatedList.filter((product) => product.name.toLowerCase().search(searchInput.toLowerCase().trim()) !== -1);
+      setProducts(updatedList);
+    }
+
+
+
+  }
+
+  useEffect(() => {
+    filtering();
+  }, [searchInput]);
+
   return (
     <div className='container mx-auto px-5 my-8'>
 
@@ -30,9 +52,10 @@ const Shop = ({ products }) => {
         {/* Top Right */}
         <div className='flex items-center gap-x-2 order-1 lg:order-2'>
           <span className='hidden lg:block'>Search:</span>
-          <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md'/>
+          <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md' value={searchInput} onChange={(e) => setSerachInput(e.target.value)} />
           <button className='px-4 py-1 bg-[#00A0C6] text-white'>Add To Cart</button>
         </div>
+
       </div>
 
 
@@ -65,56 +88,62 @@ const Shop = ({ products }) => {
             </tr>
           </thead>
           <tbody>
-            {products?.map((product, index) => {
-              return (
-                <tr key={index} className="">
-                  <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                    <img width={100} src={product?.image} alt="img" />
-                  </td>
-                  <td className="p-3 text-sm font-[500] capitalize text-[#00A0C6] underline whitespace-nowrap">
-                    {product.name}
-                  </td>
+            {products?.length > 0 ? (
+              <>
+                {products?.map((product, index) => {
+                  return (
+                    <tr key={index} className="">
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        <img width={100} src={product?.image} alt="img" />
+                      </td>
+                      <td className="p-3 text-sm font-[500] capitalize text-[#00A0C6] underline whitespace-nowrap">
+                        {product.name}
+                      </td>
 
-                  <td className="p-3 text-sm font-[500] capitalize text-[#00A0C6] underline whitespace-nowrap">
-                    {product.color}
-                  </td>
+                      <td className="p-3 text-sm font-[500] capitalize text-[#00A0C6] underline whitespace-nowrap">
+                        {product.color}
+                      </td>
 
-                  <td className="p-3 text-sm text-[#32d28c] font-semibold whitespace-nowrap">
-                    {product.availableQuantity > 0 ? (
-                      <p className='flex gap-x-1 items-center'> <FaSmile className='text-green-500' /> In Stock</p>
-                    ) : (
-                      <p>Out Of Stock</p>
-                    )}
-                  </td>
-                  <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                    ${product.price}.00
-                  </td>
-                  <td className=" pl-5 lg:pl-10 text-sm  text-gray-700 whitespace-nowrap">
-                    {product.availableQuantity}
-                  </td>
-
-                  <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                    <div>
-                      <div className='flex justify-center items-center gap-x-2 '>
-                        <span>
-                          {product.availableQuantity > 0 ? (
-                            <input type="number" className='w-12 p-1 text-center border border-[#9c9b9b] rounded-sm' />
-                          ) : (
-                            <input type="" disabled className='w-12 cursor-not-allowed  p-1 text-center bg-[#efebeb]' title='Out of Stock' />
-                          )}
-                        </span>
-                        <AiOutlineShoppingCart className='text-3xl w-16 py-1 rounded-sm text-[#f2efef] bg-[#383838]' />
+                      <td className="p-3 text-sm text-[#32d28c] font-semibold whitespace-nowrap">
                         {product.availableQuantity > 0 ? (
-                          <input type="checkbox" name="" id="" className='cursor-pointer' />
+                          <p className='flex gap-x-1 items-center'> <FaSmile className='text-green-500' /> In Stock</p>
                         ) : (
-                          <input disabled type="checkbox" className='cursor-not-allowed' />
+                          <p>Out Of Stock</p>
                         )}
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+                      </td>
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        ${product.price}.00
+                      </td>
+                      <td className=" pl-5 lg:pl-10 text-sm  text-gray-700 whitespace-nowrap">
+                        {product.availableQuantity}
+                      </td>
+
+                      <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                        <div>
+                          <div className='flex justify-center items-center gap-x-2 '>
+                            <span>
+                              {product.availableQuantity > 0 ? (
+                                <input type="number" className='w-12 p-1 text-center border border-[#9c9b9b] rounded-sm' />
+                              ) : (
+                                <input type="" disabled className='w-12 cursor-not-allowed  p-1 text-center bg-[#efebeb]' title='Out of Stock' />
+                              )}
+                            </span>
+                            <AiOutlineShoppingCart className='text-3xl w-16 py-1 rounded-sm text-[#f2efef] bg-[#383838]' />
+                            {product.availableQuantity > 0 ? (
+                              <input type="checkbox" name="" id="" className='cursor-pointer' />
+                            ) : (
+                              <input disabled type="checkbox" className='cursor-not-allowed' />
+                            )}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </>
+            ) : (
+              <h2 className='text-2xl  font-semibold text-[#9c6c6c] py-5'>No Product Found</h2>
+            )}
           </tbody>
         </table>
       </div>
