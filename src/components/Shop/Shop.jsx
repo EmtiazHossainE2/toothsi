@@ -6,8 +6,8 @@ import { BsArrow90DegLeft } from 'react-icons/bs';
 
 const Shop = ({ products, setProducts }) => {
   const [searchInput, setSerachInput] = useState('')
-  const [selectCategory , setSelectCategory] = useState('')
-  const [selectSize , setSelectSize] = useState('')
+  const [selectCategory, setSelectCategory] = useState('')
+  const [selectSize, setSelectSize] = useState('')
 
   // Filtering 
   const filtering = () => {
@@ -15,13 +15,13 @@ const Shop = ({ products, setProducts }) => {
     setProducts(updatedList)
 
     // Category 
-    if(selectSize){
+    if (selectSize) {
       updatedList = updatedList.filter((item) => item.size.toLowerCase().search(selectSize.toLowerCase().trim()) !== -1);
       setProducts(updatedList)
     }
 
     // Size 
-    if(selectCategory){
+    if (selectCategory) {
       updatedList = updatedList.filter((item) => item.category.toLowerCase().search(selectCategory.toLowerCase().trim()) !== -1);
       setProducts(updatedList)
     }
@@ -36,7 +36,7 @@ const Shop = ({ products, setProducts }) => {
 
   useEffect(() => {
     filtering();
-  }, [selectCategory,selectSize,searchInput]);
+  }, [selectCategory, selectSize, searchInput]);
 
   const handleReset = () => {
     setProducts(productList)
@@ -46,6 +46,7 @@ const Shop = ({ products, setProducts }) => {
   }
 
 
+
   return (
     <div className='container mx-auto px-5 my-8'>
       {/* Top Bar  */}
@@ -53,9 +54,9 @@ const Shop = ({ products, setProducts }) => {
 
         {/* Top Left  */}
         <div className='flex gap-x-4 order-2 lg:order-1'>
-          <select className='border border-[#706f6f] rounded-md cursor-pointer' 
-          value={selectCategory}
-          onChange={(e) => setSelectCategory(e.target.value)}
+          <select className='border border-[#706f6f] rounded-md cursor-pointer'
+            value={selectCategory}
+            onChange={(e) => setSelectCategory(e.target.value)}
           >
             <option >Category</option>
             <option >Hoodie</option>
@@ -63,8 +64,8 @@ const Shop = ({ products, setProducts }) => {
             <option >Shirt</option>
           </select>
           <select className='border border-[#706f6f] rounded-md px-2 cursor-pointer'
-          value={selectSize}
-          onChange={(e) => setSelectSize(e.target.value)}
+            value={selectSize}
+            onChange={(e) => setSelectSize(e.target.value)}
           >
             <option >Size</option>
             <option>lg</option>
@@ -77,7 +78,9 @@ const Shop = ({ products, setProducts }) => {
         {/* Top Right */}
         <div className='flex items-center gap-x-2 order-1 lg:order-2'>
           <span className='hidden lg:block'>Search:</span>
-          <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md' value={searchInput} onChange={(e) => setSerachInput(e.target.value)} />
+          <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md' value={searchInput}
+            onChange={(e) => setSerachInput(e.target.value)}
+          />
           <button className='px-4 py-1 bg-[#00A0C6] text-white'>Add To Cart</button>
         </div>
 
@@ -148,7 +151,12 @@ const Shop = ({ products, setProducts }) => {
                           <div className='flex justify-center items-center gap-x-2 '>
                             <span>
                               {product.availableQuantity > 0 ? (
-                                <input type="number" className='w-12 p-1 text-center border border-[#9c9b9b] rounded-sm' />
+                                <>
+                                  <input
+                                    type="number"
+                                    className='w-12 p-1 text-center border border-[#9c9b9b] rounded-sm'
+                                  />
+                                </>
                               ) : (
                                 <input type="" disabled className='w-12 cursor-not-allowed  p-1 text-center bg-[#efebeb]' title='Out of Stock' />
                               )}
