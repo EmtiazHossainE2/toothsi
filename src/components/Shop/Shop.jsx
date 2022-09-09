@@ -6,11 +6,26 @@ import { BsArrow90DegLeft } from 'react-icons/bs';
 
 const Shop = ({ products, setProducts }) => {
   const [searchInput, setSerachInput] = useState('')
+  const [selectCategory , setSelectCategory] = useState('')
+  const [selectSize , setSelectSize] = useState('')
+  // console.log(selectCategory);
 
   // Filtering 
   const filtering = () => {
     let updatedList = productList
     setProducts(updatedList)
+
+    // Category 
+    if(selectSize){
+      updatedList = updatedList.filter((item) => item.size.toLowerCase().search(selectSize.toLowerCase().trim()) !== -1);
+      setProducts(updatedList)
+    }
+
+    // Size 
+    if(selectCategory){
+      updatedList = updatedList.filter((item) => item.category.toLowerCase().search(selectCategory.toLowerCase().trim()) !== -1);
+      setProducts(updatedList)
+    }
 
     // Search 
     if (searchInput) {
@@ -19,12 +34,11 @@ const Shop = ({ products, setProducts }) => {
     }
 
 
-
   }
 
   useEffect(() => {
     filtering();
-  }, [searchInput]);
+  }, [selectCategory,selectSize,searchInput]);
 
   return (
     <div className='container mx-auto px-5 my-8'>
@@ -34,17 +48,23 @@ const Shop = ({ products, setProducts }) => {
 
         {/* Top Left  */}
         <div className='flex gap-x-4 order-2 lg:order-1'>
-          <select className='border border-[#706f6f] rounded-md cursor-pointer'>
-            <option value="">Category</option>
-            <option value="hoodie">Hoodie</option>
-            <option value="pant">Pant</option>
-            <option value="shirt">Shirt</option>
+          <select className='border border-[#706f6f] rounded-md cursor-pointer' 
+          value={selectCategory}
+          onChange={(e) => setSelectCategory(e.target.value)}
+          >
+            <option >Category</option>
+            <option >Hoodie</option>
+            <option >Pant</option>
+            <option >Shirt</option>
           </select>
-          <select className='border border-[#706f6f] rounded-md px-2 cursor-pointer'>
-            <option >Size</option>
-            <option value="lg">lg</option>
-            <option value="xl">xl</option>
-            <option value="xxl">xxl</option>
+          <select className='border border-[#706f6f] rounded-md px-2 cursor-pointer'
+          value={selectSize}
+          onChange={(e) => setSelectSize(e.target.value)}
+          >
+            <option>Size</option>
+            <option>lg</option>
+            <option>xl</option>
+            <option>xxl</option>
           </select>
           <span className='flex gap-1 text-[#00A0C6] font-semibold cursor-pointer items-center'> <BsArrow90DegLeft /> Reset</span>
         </div>
