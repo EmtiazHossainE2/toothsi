@@ -33,12 +33,15 @@ const Shop = ({ products, setProducts }) => {
       setProducts(updatedList);
     }
 
-
   }
 
   useEffect(() => {
     filtering();
   }, [selectCategory,selectSize,searchInput]);
+
+  const handleReset = () => {
+    setProducts(productList)
+  }
 
   return (
     <div className='container mx-auto px-5 my-8'>
@@ -52,7 +55,7 @@ const Shop = ({ products, setProducts }) => {
           value={selectCategory}
           onChange={(e) => setSelectCategory(e.target.value)}
           >
-            <option >Category</option>
+            <option disabled>Category</option>
             <option >Hoodie</option>
             <option >Pant</option>
             <option >Shirt</option>
@@ -61,12 +64,12 @@ const Shop = ({ products, setProducts }) => {
           value={selectSize}
           onChange={(e) => setSelectSize(e.target.value)}
           >
-            <option>Size</option>
+            <option disabled>Size</option>
             <option>lg</option>
             <option>xl</option>
             <option>xxl</option>
           </select>
-          <span className='flex gap-1 text-[#00A0C6] font-semibold cursor-pointer items-center'> <BsArrow90DegLeft /> Reset</span>
+          <span onClick={handleReset} className='flex gap-1 text-[#00A0C6] font-semibold cursor-pointer items-center'> <BsArrow90DegLeft /> Reset</span>
         </div>
 
         {/* Top Right */}
