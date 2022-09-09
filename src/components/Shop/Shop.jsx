@@ -8,7 +8,6 @@ const Shop = ({ products, setProducts }) => {
   const [searchInput, setSerachInput] = useState('')
   const [selectCategory , setSelectCategory] = useState('')
   const [selectSize , setSelectSize] = useState('')
-  // console.log(selectCategory);
 
   // Filtering 
   const filtering = () => {
@@ -41,11 +40,14 @@ const Shop = ({ products, setProducts }) => {
 
   const handleReset = () => {
     setProducts(productList)
+    setSerachInput('')
+    setSelectCategory('')
+    setSelectSize('')
   }
+
 
   return (
     <div className='container mx-auto px-5 my-8'>
-
       {/* Top Bar  */}
       <div className='flex flex-col lg:flex-row gap-y-3 justify-between '>
 
@@ -55,7 +57,7 @@ const Shop = ({ products, setProducts }) => {
           value={selectCategory}
           onChange={(e) => setSelectCategory(e.target.value)}
           >
-            <option disabled>Category</option>
+            <option >Category</option>
             <option >Hoodie</option>
             <option >Pant</option>
             <option >Shirt</option>
@@ -64,7 +66,7 @@ const Shop = ({ products, setProducts }) => {
           value={selectSize}
           onChange={(e) => setSelectSize(e.target.value)}
           >
-            <option disabled>Size</option>
+            <option >Size</option>
             <option>lg</option>
             <option>xl</option>
             <option>xxl</option>
