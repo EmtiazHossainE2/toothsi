@@ -3,6 +3,7 @@ import { productList } from '../../data';
 import { BsArrow90DegLeft } from 'react-icons/bs';
 import Product from './Product';
 import { useNavigate } from 'react-router-dom';
+import store from '../../hooks/store';
 
 const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
   const [searchInput, setSerachInput] = useState('')
@@ -57,7 +58,7 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
       localStorage.removeItem(product.id)
     }
     setCartItems(newCart)
-    localStorage.setItem('shopping-cart', JSON.stringify(newCart));
+    store(newCart)
   }
   // console.log(cartItems)
 

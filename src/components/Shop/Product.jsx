@@ -29,11 +29,11 @@ const Product = ({ product, handleBuy }) => {
         {product.color}
       </td>
 
-      <td className="p-3 text-sm text-[#32d28c] font-semibold whitespace-nowrap">
+      <td className="p-3 text-sm  font-semibold whitespace-nowrap">
         {product.availableQuantity > 0 ? (
-          <p className='flex gap-x-1 items-center'> <FaSmile className='text-green-500' /> In Stock</p>
+          <p className='flex gap-x-1 items-center text-[#32d28c]'> <FaSmile className='text-green-500' /> In Stock</p>
         ) : (
-          <p>Out Of Stock</p>
+          <p className='text-red-500'>Out Of Stock</p>
         )}
       </td>
       <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
