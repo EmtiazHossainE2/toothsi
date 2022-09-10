@@ -86,9 +86,9 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
             onChange={(e) => setSelectSize(e.target.value)}
           >
             <option >Size</option>
-            <option>lg</option>
-            <option>xl</option>
-            <option>xxl</option>
+            <option>M</option>
+            <option>Lg</option>
+            <option>Xl</option>
           </select>
           <span onClick={handleReset} className='flex gap-1 text-[#00A0C6] font-semibold cursor-pointer items-center'> <BsArrow90DegLeft /> Reset</span>
         </div>
