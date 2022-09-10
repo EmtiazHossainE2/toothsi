@@ -78,7 +78,7 @@ export const productList = [
     price: 50,
     size:'xl',
     color: 'black',
-    availableQuantity: 70,
+    availableQuantity: 7,
     category: 'pant'
   },
   {

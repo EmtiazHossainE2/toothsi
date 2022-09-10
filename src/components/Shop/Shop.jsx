@@ -54,8 +54,10 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
       newCart[product.id] = { ...product, cartQuantity }
     }else {
       delete newCart[product.id]
+      localStorage.removeItem(product.id)
     }
     setCartItems(newCart)
+    localStorage.setItem('shopping-cart', JSON.stringify(newCart));
   }
   // console.log(cartItems)
 

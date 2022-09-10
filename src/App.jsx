@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Cart from './components/Cart/Cart';
 import Shop from './components/Shop/Shop';
+import ThankYou from './components/ThankYou/ThankYou';
 import { productList } from './data';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         setCartItems={setCartItems}
         />} />
         <Route path='/cart/checkout' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
+        <Route path='/thank-you' element={<ThankYou/>}></Route>
       </Routes>
     </div>
   );
