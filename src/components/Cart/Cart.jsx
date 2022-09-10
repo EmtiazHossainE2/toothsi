@@ -80,7 +80,13 @@ const Cart = () => {
                 <span>Total</span>
                 <span>${totalPrice}</span>
               </div>
-              <button className='uppercase text-white bg-[#1246AF] rounded-lg text-center mb-2 px-4 py-2 container ' onClick={thanks}>Proceed to checkout</button>
+              {
+                totalPrice === 0 ? (
+                  <button className='uppercase text-white bg-[#b5b5b7] rounded-lg text-center mb-2 px-4 py-2 container cursor-not-allowed' disabled >Proceed to checkout</button>
+                ) : (
+                  <button className='uppercase text-white bg-[#1246AF] rounded-lg text-center mb-2 px-4 py-2 container ' onClick={thanks}>Proceed to checkout</button>
+                )
+              }
             </div>
           </div>
         </div>
