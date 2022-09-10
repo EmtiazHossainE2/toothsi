@@ -59,10 +59,10 @@ const SummaryDetail = ({ item, cartItems, setCartItems }) => {
 
   return (
     <tr>
-      <td>
+      <td className='py-4'>
         <div className='flex gap-x-5 items-center'>
           <button onClick={() => handleRemove(item.id)} className='px-2 py-1 bg-red-500 text-white rounded-sm'>X</button>
-          <img width={100} src={item.image} alt={item.name} />
+          <img width={100} className="h-20" src={item.image} alt={item.name} />
           <span>{item.name}</span>
         </div>
       </td>

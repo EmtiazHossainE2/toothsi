@@ -19,7 +19,7 @@ const Product = ({ product, handleBuy }) => {
   return (
     <tr>
       <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-        <img width={100} className="h-24" src={product?.image} alt={product.name} />
+        <img width={100} className="h-20" src={product?.image} alt={product.name} />
       </td>
       <td className="p-3 text-sm font-[500] capitalize text-[#00A0C6] underline whitespace-nowrap">
         {product.name}
