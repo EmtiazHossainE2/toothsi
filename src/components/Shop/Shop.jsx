@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { productList } from '../../data';
 import { BsArrow90DegLeft } from 'react-icons/bs';
 import Product from './Product';
+import { useNavigate } from 'react-router-dom';
 
-const Shop = ({ products, setProducts }) => {
+const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
   const [searchInput, setSerachInput] = useState('')
   const [selectCategory, setSelectCategory] = useState('')
   const [selectSize, setSelectSize] = useState('')
-  const [cartItems, setCartItems] = useState({})
+  const navigate = useNavigate()
 
   // Filtering 
   const filtering = () => {
@@ -56,7 +57,7 @@ const Shop = ({ products, setProducts }) => {
     }
     setCartItems(newCart)
   }
-  console.log(cartItems)
+  // console.log(cartItems)
 
 
 
@@ -94,7 +95,7 @@ const Shop = ({ products, setProducts }) => {
           <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md' value={searchInput}
             onChange={(e) => setSerachInput(e.target.value)}
           />
-          <button className='px-4 py-1 bg-[#00A0C6] text-white'>Add To Cart</button>
+          <button onClick={() => navigate('/cart/checkout')} className='px-4 py-1 bg-[#00A0C6] text-white'>Add To Cart</button>
         </div>
 
       </div>

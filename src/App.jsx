@@ -6,12 +6,20 @@ import { productList } from './data';
 
 const App = () => {
   const [products,setProducts] = useState(productList)
+  const [cartItems, setCartItems] = useState({})
   
+  // console.log(cartItems);
+
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Shop products={products} setProducts={setProducts}/>} />
-        <Route path='/cart/checkout' element={<Cart/>} />
+        <Route path='/' element={<Shop 
+        products={products} 
+        setProducts={setProducts}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        />} />
+        <Route path='/cart/checkout' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
       </Routes>
     </div>
   );
