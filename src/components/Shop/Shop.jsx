@@ -4,6 +4,7 @@ import { BsArrow90DegLeft } from 'react-icons/bs';
 import Product from './Product';
 import { useNavigate } from 'react-router-dom';
 import store from '../../hooks/store';
+import Footer from '../Footer/Footer';
 
 const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
   const [searchInput, setSerachInput] = useState('')
@@ -149,6 +150,7 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
           </tbody>
         </table>
       </div>
+      <Footer/>
     </div>
   );
 };
