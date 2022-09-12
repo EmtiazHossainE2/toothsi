@@ -3,14 +3,16 @@ import { productList } from '../../data';
 import { BsArrow90DegLeft } from 'react-icons/bs';
 import Product from './Product';
 import { useNavigate } from 'react-router-dom';
-import store from '../../hooks/store';
 import Footer from '../Footer/Footer';
+import { getStoredCart, storeToDb } from '../../utilities/fakedb';
 
 const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
-  const [searchInput, setSerachInput] = useState('')
+  const [searchInput, setSearchInput] = useState('')
   const [selectCategory, setSelectCategory] = useState('')
   const [selectSize, setSelectSize] = useState('')
   const navigate = useNavigate()
+  const items = Object.values(getStoredCart())
+  // console.log(items.length)
 
   // Filtering 
   const filtering = () => {
@@ -43,7 +45,7 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
 
   const handleReset = () => {
     setProducts(productList)
-    setSerachInput('')
+    setSearchInput('')
     setSelectCategory('')
     setSelectSize('')
   }
@@ -59,7 +61,7 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
       localStorage.removeItem(product.id)
     }
     setCartItems(newCart)
-    store(newCart)
+    storeToDb(newCart)
   }
   // console.log(cartItems)
 
@@ -97,9 +99,9 @@ const Shop = ({ products, setProducts , cartItems , setCartItems}) => {
         <div className='flex items-center gap-x-2 order-1 lg:order-2'>
           <span className='hidden lg:block'>Search:</span>
           <input type="text" placeholder='woo ninja' className='pl-2 border border-[#706f6f] rounded-md' value={searchInput}
-            onChange={(e) => setSerachInput(e.target.value)}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button onClick={() => navigate('/cart/checkout')} className='px-4 py-1 bg-[#00A0C6] text-white'>Add To Cart</button>
+          <button onClick={() => navigate('/cart/checkout')} className='px-3 py-1 bg-[#00A0C6] text-white rounded-md'>Cart {items.length}</button>
         </div>
 
       </div>

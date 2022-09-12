@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
-import store from '../../../hooks/store';
+import { storeToDb } from '../../../utilities/fakedb';
 
 
 const SummaryDetail = ({ item, cartItems, setCartItems }) => {
@@ -25,7 +25,7 @@ const SummaryDetail = ({ item, cartItems, setCartItems }) => {
       })
       // console.log(uQuantity);
       setCartItems(uQuantity)
-      store(uQuantity)
+      storeToDb(uQuantity)
       setUpdatedQuantity(parseInt(updatedQuantity + 1))
     }
   }
@@ -44,7 +44,7 @@ const SummaryDetail = ({ item, cartItems, setCartItems }) => {
       })
       // console.log(uQuantity);
       setCartItems(uQuantity)
-      store(uQuantity)
+      storeToDb(uQuantity)
       setUpdatedQuantity(parseInt(updatedQuantity - 1))
     }
   }
@@ -53,7 +53,7 @@ const SummaryDetail = ({ item, cartItems, setCartItems }) => {
     const removeItem = cartItems.filter((cartF) => cartF.id !== id)
     // console.log(removeItem)
     setCartItems(removeItem)
-    store(removeItem)
+    storeToDb(removeItem)
   }
 
 
